@@ -1,2 +1,10 @@
 title: MVM Documentation
 remote-theme: just-the-docs/just-the-docs
+
+heading_anchors: true
+
+color_scheme: dark
+
+search_enabled: true
+search.button: true
+search.focus_shortcut_key: 'k'
