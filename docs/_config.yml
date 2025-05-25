@@ -8,3 +8,8 @@ color_scheme: dark
 search_enabled: true
 search.button: true
 search.focus_shortcut_key: 'k'
+
+aux_links:
+  Github:
+    - https://github.com/nahal04/mvm/
+    
