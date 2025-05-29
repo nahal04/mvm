@@ -24,7 +24,7 @@ int main() {
    // fork:
    	OP_RECV,         // Receive the message from parent and store it in stack
    	OP_POP,          // Pop out the from address from stack
-   	OP_PRINTC,       // Print the string from stack
+   	OP_PRINTS,       // Print the string from stack
    	OP_HALT          // Terminate the child process
    };
 
