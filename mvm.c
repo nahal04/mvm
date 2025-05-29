@@ -495,7 +495,7 @@ int run_step(vm_proc *p) {
 				mvm_errno = ERR_NOOPERAND;
 				return -1;
 			}
-			int c = p->stack[p->sp - 1];
+			int c = p->stack[--p->sp];
 			if (p->csp >= CALLSTACK_MAX) {
 				mvm_errno = ERR_STACKOVERFLOW;
 				return -1;
