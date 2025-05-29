@@ -225,14 +225,6 @@ int mvm_strlen(char *s) {
 	return i;
 }	
 
-int *pop_stack(int *s, int *sp) {
-	if (*sp > 0) {
-		(*sp)--;
-		return &s[(*sp)];
-	}
-	mvm_errno = ERR_STACKEMPTY;
-	return NULL;
-}
 
 int push_stack(int *s, int *sp, int value, int limit) {
 	if (*sp < limit) {
@@ -264,7 +256,11 @@ int run_step(vm_proc *p) {
 				return -1;
 		       	break;
 		case OP_POP:
-			pop_stack(p->stack, &p->sp);
+			if (p->sp < 1) {
+				mvm_errno = ERR_STACKEMPTY;
+				return -1;
+			}
+			p->sp--;	
 			break;
 		case OP_DUP:
 			if (p->sp == 0) {
@@ -527,6 +523,7 @@ int run_step(vm_proc *p) {
 			mvm_errno = ERR_UNKNOWN;
 			return -1;
 	}
+	return 0;
 }
 
 #define TIME_SLICE 3
