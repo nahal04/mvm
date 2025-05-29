@@ -122,9 +122,9 @@ A process on the fly can create a child process using the `OP_FORK` instruction.
 
 Processes can communicate with their parents or children, not beyond that. Use `OP_SEND` and `OP_RECV` instructions for sending and receiving messages between processes.
 
-`OP_SEND` expects a single argument which can be -2, -1 or any valid PID (Process ID). if -2, then the message will be sent to the parent. If -1, the message will be broadcasted to all children. If any other PID is provided, the message will only be sent if the target process is either the sending process' child or parent. Otherwise, the message is not sent.
+`OP_SEND` expects a target PID from the stack. If the target PID is -2, then the message will be sent to the parent. If -1, the message will be broadcasted to all children. If any other PID is provided, the message will only be sent if the target process is either the sending process' child or parent. Otherwise, the message is not sent.
 
-The message to be sent is taken from the stack. The message should have the length in the top of the stack followed by the integers. After the call to `OP_SEND`, the message is removed from the stack , regardless, its sent or not.  
+The message to be sent is taken from the stack. The message should have the length in the top of the stack followed by the integers. The message along with length is placed beneath the target PID in the stack. After a call to `OP_SEND`, the message is removed from the stack.
 
 The target process can call `OP_RECV` instruction to receive the process or wait for the process, if there is no message sent yet. The received message is pushed to the stack followed by the length of the message followed by the sender's PID. Consequently, the sender's PID ends up at the top of the stack.
 
