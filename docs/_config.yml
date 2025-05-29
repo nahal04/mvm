@@ -10,6 +10,7 @@ search.button: true
 search.focus_shortcut_key: 'k'
 
 aux_links:
-  Github:
-    - https://github.com/nahal04/mvm/
-    
+  "Github":
+    - "https://github.com/nahal04/mvm"
+
+aux_links_new_tab: true 

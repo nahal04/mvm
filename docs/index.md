@@ -82,7 +82,7 @@ Use `OP_PUSH` to push an integer to the stack. The integer has to be specified a
 
 # Data types
 
-Everything is an integer in MVM. Floats, chars, booleans are all eventually cast to aninteger. While accepting user input use `OP_SCAN` for integers and `OP_SCANS` for string and characters. The scanned input is pushed automatically to the stack. The input limit is 256 bytes.
+Everything is an integer in MVM. Floats, chars, booleans are all eventually cast to aninteger. While accepting user input use `OP_SCAN` for integers and `OP_SCANS` for string and characters. The scanned input is pushed automatically to the stack. The input limit is 256 bytes. `OP_SCAN` converts the input into in an integer like so `"21" -> 21`. However, you can also input numbers of different base using `#`. For example: `16#0F1CAF`, `2#1001101`. Any base from 1 to 35 are allowed.
 
 # User I/O
 
